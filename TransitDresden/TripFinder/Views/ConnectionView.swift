@@ -34,17 +34,11 @@ struct ConnectionView: View {
         NavigationStack(path: $stopManager.presentedStops) {
             VStack(spacing: 5) {
                 // .contentMargins(.vertical, 0)
-                if #available(iOS 17.0, *) {
-                    listView()
-                        .listSectionSpacing(18)
-                        .sheet(isPresented: $showingSheet, content: {
-                            ConnectionStopSelectionView()
-                        })
-                } else {
-                    listView()    .sheet(isPresented: $showingSheet, content: {
+                listView()
+                    .listSectionSpacing(18)
+                    .sheet(isPresented: $showingSheet, content: {
                         ConnectionStopSelectionView()
                     })
-                }
             }
             .navigationTitle("🏘️ Verbindungen")
             .toolbar {

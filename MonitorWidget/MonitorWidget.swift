@@ -135,16 +135,6 @@ struct MonitorWidget: Widget {
         }
         .configurationDisplayName("Transit")
         .description("Widget zur Anzeige der Abfahrten an einer Haltestelle.")
-        .contentMarginsDisabledIfAvailable()
-    }
-}
-
-extension WidgetConfiguration {
-    func contentMarginsDisabledIfAvailable() -> some WidgetConfiguration {
-        if #available(iOSApplicationExtension 17.0, *) {
-            return self.contentMarginsDisabled()
-        } else {
-            return self
-        }
+        .contentMarginsDisabled()
     }
 }
