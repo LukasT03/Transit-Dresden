@@ -27,18 +27,13 @@ final class GoViewModel {
     private(set) var routes: [Route] = []
     var selectedIndex = 0
     private(set) var isRefreshing = false
-    private(set) var isLoadingLater = false
 
-    @ObservationIgnored private var tripRequest: TripRequest?
-    @ObservationIgnored private var sessionId: String?
     @ObservationIgnored private var serviceSession: CLServiceSession?
+    /// Vorschau-Modus: zeigt feste Beispieldaten und plant nicht über das Netz
+    @ObservationIgnored private var isPreview = false
 
     var selectedRoute: Route? {
         routes.indices.contains(selectedIndex) ? routes[selectedIndex] : nil
-    }
-
-    var bestIndex: Int? {
-        Self.bestIndex(in: routes)
     }
 
     func select(_ destination: ConnectionStop) {
@@ -52,15 +47,13 @@ final class GoViewModel {
     func reset() {
         destination = nil
         routes = []
-        tripRequest = nil
-        sessionId = nil
         phase = .idle
     }
 
     /// Plant ab dem aktuellen Standort. Bei `silent` bleiben bisherige Ergebnisse sichtbar
     /// und Fehler werden ignoriert, solange schon Verbindungen angezeigt werden.
     func plan(silent: Bool = false) async {
-        guard let destination else { return }
+        guard let destination, !isPreview else { return }
         let showProgress = !silent || routes.isEmpty
         isRefreshing = true
         defer { isRefreshing = false }
@@ -104,36 +97,11 @@ final class GoViewModel {
             let trip = try await TripService.fetchTrips(request)
             // Ziel wurde während des Ladens geändert
             guard self.destination == destination else { return }
-            tripRequest = request
-            sessionId = trip.SessionId
             apply(trip.Routes, keepSelection: silent)
         } catch {
             if !Task.isCancelled {
                 fail("Die Verbindungen konnten nicht geladen werden.", silent: silent)
             }
-        }
-    }
-
-    /// Lädt spätere Verbindungen nach und springt zur nächsten
-    func loadLater() async {
-        guard var request = tripRequest, let sessionId, !isLoadingLater else { return }
-        isLoadingLater = true
-        defer { isLoadingLater = false }
-
-        // Wie in der Verbindungssuche: jeweils eine Seite weiter, bezogen auf die letzte SessionId
-        request.sessionId = sessionId
-        request.numberprev = 0
-        request.numbernext = 1
-
-        guard let trip = try? await TripService.fetchTrips(request, isNext: true) else { return }
-        self.sessionId = trip.SessionId
-
-        let selectedKey = selectedRoute.map(Self.key)
-        let known = Set(routes.map(Self.key))
-        let added = Self.catchable(trip.Routes).filter { !known.contains(Self.key($0)) }
-        routes = Self.chronological(routes + added)
-        if let selectedKey, let index = routes.firstIndex(where: { Self.key($0) == selectedKey }) {
-            selectedIndex = min(index + (added.isEmpty ? 0 : 1), routes.count - 1)
         }
     }
 
@@ -232,6 +200,48 @@ final class GoViewModel {
     }
 }
 
+#if DEBUG
+extension GoViewModel {
+    /// Beispielverbindungen aus trip.json für Xcode-Vorschauen.
+    /// Die Zeiten werden so verschoben, dass die erste Verbindung in 5 Minuten startet.
+    static var preview: GoViewModel {
+        let model = GoViewModel()
+        model.isPreview = true
+        model.destination = ConnectionStop(displayName: "Hauptbahnhof Dresden")
+
+        let routes = tripTmp.Routes
+        let earliest = routes.compactMap(\.leaveTime).min() ?? .now
+        let offset = Date.now.addingTimeInterval(5 * 60).timeIntervalSince(earliest)
+        model.routes = chronological(routes.map { shifted($0, by: offset) })
+        model.selectedIndex = bestIndex(in: model.routes) ?? 0
+        model.phase = .loaded
+        return model
+    }
+
+    private static func shifted(_ route: Route, by offset: TimeInterval) -> Route {
+        var route = route
+        for partialIndex in route.PartialRoutes.indices {
+            guard let stops = route.PartialRoutes[partialIndex].RegularStops else { continue }
+            route.PartialRoutes[partialIndex].RegularStops = stops.map { stop in
+                var stop = stop
+                stop.ArrivalTime = shifted(stop.ArrivalTime, by: offset) ?? stop.ArrivalTime
+                stop.DepartureTime = shifted(stop.DepartureTime, by: offset) ?? stop.DepartureTime
+                stop.ArrivalRealTime = shifted(stop.ArrivalRealTime, by: offset)
+                stop.DepartureRealTime = shifted(stop.DepartureRealTime, by: offset)
+                return stop
+            }
+        }
+        return route
+    }
+
+    /// Verschiebt einen Zeitstempel im VVO-Format "/Date(<ms>-0000)/"
+    private static func shifted(_ time: String?, by offset: TimeInterval) -> String? {
+        guard let time, let date = DateParser.extractTimestamp(time: time) else { return time }
+        return "/Date(\(Int64((date.timeIntervalSince1970 + offset) * 1000))-0000)/"
+    }
+}
+#endif
+
 extension Route {
     /// Zeitpunkt, zu dem man losgehen muss (erster Abschnitt mit Uhrzeit, meist der Fußweg)
     var leaveTime: Date? {
@@ -242,9 +252,14 @@ extension Route {
         PartialRoutes.reversed().lazy.compactMap { $0.getEndTime() }.first
     }
 
-    /// Erster Abschnitt mit einem Verkehrsmittel (Fußwege und Wartezeiten haben keinen Liniennamen)
+    /// Erster Abschnitt mit einem Verkehrsmittel (kein Fußweg, keine Treppe, keine Wartezeit)
     var firstRide: PartialRoute? {
-        PartialRoutes.first { $0.Mot.Name != nil && $0.RegularStops != nil }
+        PartialRoutes.first { TransitMode(motType: $0.Mot.type).isRide && $0.RegularStops != nil }
+    }
+
+    /// Ohne Verkehrsmittel, nur zu Fuß: Losgehen ist jederzeit möglich, die geplanten Zeiten sind nur ein Beispiel
+    var isWalkOnly: Bool {
+        firstRide == nil
     }
 }
 
@@ -254,7 +269,7 @@ enum RecentDestinations {
     private static let limit = 5
 
     static func load() -> [ConnectionStop] {
-        guard let data = UserDefaults.appGroup?.data(forKey: key),
+        guard let data = UserDefaults.standard.data(forKey: key),
               let destinations = try? JSONDecoder().decode([ConnectionStop].self, from: data) else {
             return []
         }
@@ -265,7 +280,7 @@ enum RecentDestinations {
         var destinations = load().filter { $0.displayName != destination.displayName }
         destinations.insert(destination, at: 0)
         if let data = try? JSONEncoder().encode(Array(destinations.prefix(limit))) {
-            UserDefaults.appGroup?.set(data, forKey: key)
+            UserDefaults.standard.set(data, forKey: key)
         }
     }
 }

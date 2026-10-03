@@ -13,7 +13,7 @@ Abfahrten, Verbindungen und Haltestellen für den ÖPNV in Dresden.
 </p>
 
 ## Anforderungen
-* iOS 27 / watchOS 27
+* iOS 27
 * Xcode 27
 
 ## Projekt bauen und starten
