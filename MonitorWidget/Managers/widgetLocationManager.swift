@@ -1,6 +1,6 @@
 //
 //  widgetLocationManager.swift
-//  Haltestellenmonitor1-DD
+//  TransitDresden
 //
 //  Created by Tom Braune on 03.11.23
 //  Credit to https://github.com/AKORA-Studios for helping with the LocationManager

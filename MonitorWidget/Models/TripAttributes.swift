@@ -1,6 +1,6 @@
 //
 //  TripAttributes.swift
-//  Haltestellenmonitor1-DD
+//  TransitDresden
 //
 //  Created by Peter Lohse on 21.04.23.
 //

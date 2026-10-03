@@ -1,7 +1,11 @@
-# Haltestellenmonitor-v3
-Haltestellen Navigator für Dresden
+# Transit Dresden
+Abfahrten, Verbindungen und Haltestellen für den ÖPNV in Dresden.
 
-[<img src="images/appstoreImage.svg" height="50">](https://apps.apple.com/de/app/haltestellenmonitor-dresden/id1266844674)
+> **Herkunft:** Transit Dresden ist eine veränderte Version von
+> [Haltestellenmonitor Dresden](https://github.com/HanashiDev/Haltestellenmonitor-v3)
+> von HanashiDev (Peter Lohse u. a.). Das Original-Repository ist archiviert.
+> Seit Oktober 2026 wird das Projekt von Lukas Tuchscherer weiterentwickelt und verändert
+> (u. a. neuer Name, iOS 27, Liquid Glass, MapKit-Geocoding).
 
 ### Showcase
 
@@ -36,33 +40,27 @@ Haltestellen Navigator für Dresden
 
 
 ## Anforderungen
-* iOS: 16.4
-* Xcode 14.3*
+* iOS 27 / watchOS 26
+* Xcode 27
 
 Für mehr Infos siehe: https://developer.apple.com/support/xcode/
 
-## How to contribute
-0. Erstell ein Issue mit deinem Vorsachlag
-1. Fork das Projekt
-2. Setzte deinen Vorschlag um
-3. Erstelle eine Pullrequest
-4. Warte bis ein Maintainer diese annimmt oder Feedback gibt
-
-Bitte achte darauf das neuer Code zum Codestyle des bisher vorhandenen Codes ähnlich ist und verständlich geschrieben ist.
-
-### Allgemeine Anmerkungen dazu
-* Keine Binary Files (wie z.B. .DS_Store) Datein oder so pushen
-* Keine Identifier vom z.B. dem Development Team des projektes in der Pullrequest ändern
-* Bei Fragen zum Codestyle: [siehe hier](https://google.github.io/swift/)
-
-## How to Install and Run the Project
+## Projekt bauen und starten
 ```
-git clone https://github.com/HanashiDev/Haltestellenmonitor-v3
+git clone https://github.com/LukasT03/Transit-Dresden
 ```
 
-1. Öffne die workspace Datei in Xcode
-2. Nutze CMD + R um das App Shema (Haltestellenmonitor1-DD) auszuführen c:
+1. Öffne `TransitDresden.xcodeproj` in Xcode
+2. Wähle unter *Signing & Capabilities* dein eigenes Development Team
+3. Starte das Schema `TransitDresden` mit CMD + R
 
+## Mitmachen
+1. Erstelle ein Issue mit deinem Vorschlag
+2. Forke das Projekt und setze den Vorschlag um
+3. Erstelle einen Pull Request
 
-## License
-Das Projekt läuft unter der GNU GENERAL PUBLIC LICENSE. [Für mehr Info siehe hier](/LICENCES.md)
+Bitte achte darauf, dass neuer Code zum Stil des vorhandenen Codes passt und verständlich geschrieben ist.
+Keine Binärdateien wie `.DS_Store` committen. Bei Fragen zum Codestyle: [siehe hier](https://google.github.io/swift/)
+
+## Lizenz
+Das Projekt steht, wie das Original, unter der GNU General Public License v3.0. [Für mehr Info siehe hier](LICENSE)

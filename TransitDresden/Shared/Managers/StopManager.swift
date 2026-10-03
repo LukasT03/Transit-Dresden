@@ -1,0 +1,14 @@
+//
+//  ShowManager.swift
+//  TransitDresden
+//
+//  Created by Peter Lohse on 18.04.23.
+//
+
+import Foundation
+
+class StopManager: ObservableObject {
+    @Published var selectedStop: Stop?
+    @Published var presentedStops = [Stop]()
+    @Published var presentedMapStops = [Stop]()
+}
