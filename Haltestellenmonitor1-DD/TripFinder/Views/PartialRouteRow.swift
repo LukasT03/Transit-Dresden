@@ -86,14 +86,11 @@ struct PartialRouteRow: View {
     }
 }
 
-struct PartialRouteRow_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            PartialRouteRow(partialRoute: tripTmp.Routes[0].PartialRoutes[0])
-                .previewLayout(.fixed(width: 500, height: 100))
-                .padding()
-        }  .padding()
-    }
+#Preview(traits: .fixedLayout(width: 500, height: 100)) {
+    VStack {
+        PartialRouteRow(partialRoute: tripTmp.Routes[0].PartialRoutes[0])
+            .padding()
+    }  .padding()
 }
 
 struct PartialRouteRowWaitingTime: View {

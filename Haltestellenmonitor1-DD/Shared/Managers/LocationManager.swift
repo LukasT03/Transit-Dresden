@@ -86,26 +86,31 @@ final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelega
         print("LocationManager Error: \(error)")
     }
 
-    func lookUpCurrentLocation(completionHandler: @escaping (CLPlacemark?)
+    func lookUpCurrentLocation(completionHandler: @escaping @MainActor (MKMapItem?)
                     -> Void ) {
         // Use the last reported location.
-        if let lastLocation = self.llocation {
-            let geocoder = CLGeocoder()
-
-            // Look up the location and pass it to the completion handler
-            geocoder.reverseGeocodeLocation(lastLocation,
-                        completionHandler: { (placemarks, error) in
-                if error == nil {
-                    let firstLocation = placemarks?[0]
-                    completionHandler(firstLocation)
-                } else {
-                 // An error occurred during geocoding.
-                    completionHandler(nil)
-                }
-            })
-        } else {
+        guard let lastLocation = self.llocation,
+              let request = MKReverseGeocodingRequest(location: lastLocation) else {
             // No location was available.
-            completionHandler(nil)
+            Task { @MainActor in completionHandler(nil) }
+            return
         }
+
+        // Look up the location and pass it to the completion handler
+        Task { @MainActor in
+            // An error during geocoding results in nil
+            let mapItems = try? await request.mapItems
+            completionHandler(mapItems?.first)
+        }
+    }
+}
+
+extension MKMapItem {
+    /// Single line address without country, e.g. "Postplatz 1, 01067 Dresden"
+    var singleLineAddress: String {
+        addressRepresentations?.fullAddress(includingRegion: false, singleLine: true)
+            ?? address?.shortAddress
+            ?? name
+            ?? ""
     }
 }

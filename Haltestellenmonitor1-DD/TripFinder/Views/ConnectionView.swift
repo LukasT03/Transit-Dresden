@@ -143,9 +143,9 @@ struct ConnectionView: View {
 
                     Button {
                         locationManager.requestCurrentLocationComplete {
-                            locationManager.lookUpCurrentLocation { placemark in
-                                if placemark != nil {
-                                    filter.startStop = ConnectionStop(displayName: "\(placemark?.name ?? ""), \(placemark?.postalCode ?? "") \(placemark?.locality ?? "")", location: StopCoordinate(latitude: locationManager.location?.latitude ?? 0, longitude: locationManager.location?.longitude ?? 0))
+                            locationManager.lookUpCurrentLocation { mapItem in
+                                if let mapItem {
+                                    filter.startStop = ConnectionStop(displayName: mapItem.singleLineAddress, location: StopCoordinate(latitude: locationManager.location?.latitude ?? 0, longitude: locationManager.location?.longitude ?? 0))
                                 }
                             }
                         }
@@ -174,9 +174,9 @@ struct ConnectionView: View {
 
                     Button {
                         locationManager.requestCurrentLocationComplete {
-                            locationManager.lookUpCurrentLocation { placemark in
-                                if placemark != nil {
-                                    filter.endStop = ConnectionStop(displayName: "\(placemark?.name ?? ""), \(placemark?.postalCode ?? "") \(placemark?.locality ?? "")", location: StopCoordinate(latitude: locationManager.location?.latitude ?? 0, longitude: locationManager.location?.longitude ?? 0))
+                            locationManager.lookUpCurrentLocation { mapItem in
+                                if let mapItem {
+                                    filter.endStop = ConnectionStop(displayName: mapItem.singleLineAddress, location: StopCoordinate(latitude: locationManager.location?.latitude ?? 0, longitude: locationManager.location?.longitude ?? 0))
                                 }
                             }
                         }

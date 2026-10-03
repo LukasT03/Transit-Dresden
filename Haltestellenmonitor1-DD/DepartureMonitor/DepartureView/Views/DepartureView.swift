@@ -157,7 +157,7 @@ struct DepartureView: View {
             }
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-        .onChange(of: dateTime) { _ in
+        .onChange(of: dateTime) {
             Task {
                 await getDeparture()
             }

@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreLocation
 import Contacts
+import MapKit
 
 struct ConnectionStopSelectionView: View {
     @EnvironmentObject var locationManager: LocationManager
@@ -15,7 +16,6 @@ struct ConnectionStopSelectionView: View {
     @EnvironmentObject var filter: ConnectionFilter
     @Environment(\.dismiss) var dismiss
     @State private var searchText = ""
-    @State private var placemarks: [CLPlacemark] = []
     @State private var location: CLLocation?
     @State private var addressString = ""
     @State private var showPicker = false
@@ -160,12 +160,9 @@ struct ConnectionStopSelectionView: View {
     func selectContactAddress(address: CNPostalAddress) {
         let addressStr = "\(address.street), \(address.postalCode) \(address.city)"
 
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(addressStr) { (placemarks, _) in
-            guard
-                let placemarks = placemarks,
-                let location = placemarks.first?.location
-            else {
+        guard let request = MKGeocodingRequest(addressString: addressStr) else { return }
+        Task {
+            guard let location = (try? await request.mapItems)?.first?.location else {
                 return
             }
 
@@ -176,9 +173,9 @@ struct ConnectionStopSelectionView: View {
 
                 if filter.startStop == nil {
                     locationManager.requestCurrentLocationComplete {
-                        locationManager.lookUpCurrentLocation { placemark in
-                            if placemark != nil {
-                                filter.startStop = ConnectionStop(displayName: "\(placemark?.name ?? ""), \(placemark?.postalCode ?? "") \(placemark?.locality ?? "")", location: StopCoordinate(latitude: locationManager.location?.latitude ?? 0, longitude: locationManager.location?.longitude ?? 0))
+                        locationManager.lookUpCurrentLocation { mapItem in
+                            if let mapItem {
+                                filter.startStop = ConnectionStop(displayName: mapItem.singleLineAddress, location: StopCoordinate(latitude: locationManager.location?.latitude ?? 0, longitude: locationManager.location?.longitude ?? 0))
                             }
                         }
                     }
@@ -189,23 +186,14 @@ struct ConnectionStopSelectionView: View {
     }
 
     func changePlace() {
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(searchText) { (placemarks, _) in
-            guard
-                let placemarks = placemarks,
-                let location = placemarks.first?.location
-            else {
+        guard let request = MKGeocodingRequest(addressString: searchText) else { return }
+        Task {
+            guard let mapItem = (try? await request.mapItems)?.first else {
                 return
             }
 
-            self.placemarks = placemarks
-            self.location = location
-
-            if placemarks.first != nil {
-                addressString = "\(placemarks.first?.name ?? ""), \(placemarks.first?.postalCode ?? "") \(placemarks.first?.locality ?? "")"
-            } else {
-                addressString = ""
-            }
+            self.location = mapItem.location
+            addressString = mapItem.singleLineAddress
         }
     }
 

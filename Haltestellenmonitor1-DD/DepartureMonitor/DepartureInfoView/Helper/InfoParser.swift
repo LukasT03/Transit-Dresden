@@ -171,6 +171,6 @@ func formattedText(from sections: [stringSection]) -> Text {
             sectionText = sectionText.font(.body)
         }
 
-        return partialResult + sectionText
+        return Text("\(partialResult)\(sectionText)")
     }
 }
