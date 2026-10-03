@@ -72,6 +72,17 @@ struct DepartureView: View {
                                     .accessibilityAddTraits(.isButton)
                                     .accessibilityHint("Zeige \(stopEvent.hasInfos() ? "Meldungen & " : "")nächste Haltestellen dieser Linie")
                             }
+                           
+                        }
+                        Section {
+                            Button {
+                                Task {
+                                    await getDeparture(true)
+                                }
+                            } label: {
+                                Text("Spätere Abfahrten laden")
+                            }
+                            .frame(maxWidth: .infinity)
                         }
                     }
                 }
@@ -185,10 +196,14 @@ struct DepartureView: View {
         }
     }
 
-    func getDeparture() async {
+    func getDeparture(_ showLater: Bool = false) async {
         var localDateTime = dateTime
         if localDateTime < Date.now {
             localDateTime = Date.now
+        }
+        
+        if showLater {
+            dateTime = dateTime + (5 * 60) // 5 minutes
         }
 
         let url = URL(string: "https://efa.vvo-online.de/std3/trias/XML_DM_REQUEST")!
@@ -213,7 +228,7 @@ struct DepartureView: View {
                 do {
                     try await Task.sleep(for: .seconds(1))
                     if !Task.isCancelled {
-                        await getDeparture()
+                        await getDeparture(showLater)
                     }
                 } catch {
                     // Task was cancelled during sleep

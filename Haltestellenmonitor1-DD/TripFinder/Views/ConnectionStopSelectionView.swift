@@ -23,114 +23,146 @@ struct ConnectionStopSelectionView: View {
     @State private var showNoAddressAlert = false
     @State private var contactName = ""
     @State private var addresses: [CNLabeledValue<CNPostalAddress>] = []
-
+    
+    @State private var isSearchFieldFocused: Bool = true
+    
     var body: some View {
         NavigationStack {
-            Form {
-                Section {
-                    if addressString != "" {
-                        HStack {
-                            Text("🏘️ \(addressString)")
-                                .lineLimit(1)
-                            Spacer()
-                        }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            if filter.start {
-                                filter.startStop = ConnectionStop(displayName: addressString, location: StopCoordinate(latitude: location?.coordinate.latitude ?? 0, longitude: location?.coordinate.longitude ?? 0))
-                            } else {
-                                filter.endStop = ConnectionStop(displayName: addressString, location: StopCoordinate(latitude: location?.coordinate.latitude ?? 0, longitude: location?.coordinate.longitude ?? 0))
-                            }
-                            dismiss()
-                        }
+            viewBody()
+                .searchable(
+                    text: $searchText,
+                    isPresented: $isSearchFieldFocused,
+                    placement: .navigationBarDrawer(displayMode: .always)
+                )
+        }  .dynamicTypeSize(.medium ... .large)
+            .task(id: searchText) {
+                changePlace()
+            }
+            .alert(
+                "Bei diesem Kontakt ist keine Adresse hinterlegt.",
+                isPresented: $showNoAddressAlert
+            ) {
+                Button {
+                    // do nothing
+                } label: {
+                    Text("OK")
+                }
+            }
+            .sheet(isPresented: $showPicker) {
+                ContactPicker { result in
+                    switch result {
+                    case .selectedContact(let contact):
+                        selectContact(contact: contact)
+                    case .cancelled:
+                        // Handle cancellation
+                        break
                     }
+                }
+                .dynamicTypeSize(.medium ... .large)
+            }
+    }
+    func viewBody() -> some View {
+        return  Form {
+            Section {
+                if addressString != "" {
                     HStack {
-                        if contactName != "" {
-                            Text("📒 \(contactName)")
-                                .lineLimit(1)
-                        } else {
-                            Text("📒 Kontakt auswählen")
-                                .foregroundColor(Color.gray)
-                                .lineLimit(1)
-                        }
+                        Text("🏘️ \(addressString)")
+                            .lineLimit(1)
                         Spacer()
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        showPicker.toggle()
-                    }
-                }
-                if addresses.count > 0 {
-                    Section(header: Text("Kontakt-Adressen")) {
-                        List(addresses, id: \.self) { labeledAddress in
-                            HStack {
-                                Text("\(labeledAddress.value.street), \(labeledAddress.value.postalCode) \(labeledAddress.value.city)")
-                                    .lineLimit(1)
-                                Spacer()
-                            }
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                selectContactAddress(address: labeledAddress.value)
-                            }
+                        if filter.start {
+                            filter.startStop = ConnectionStop(
+                                displayName: addressString,
+                                location: StopCoordinate(
+                                    latitude: location?.coordinate.latitude ?? 0,
+                                    longitude: location?.coordinate.longitude ?? 0
+                                )
+                            )
+                        } else {
+                            filter.endStop = ConnectionStop(
+                                displayName: addressString,
+                                location: StopCoordinate(
+                                    latitude: location?.coordinate.latitude ?? 0,
+                                    longitude: location?.coordinate.longitude ?? 0
+                                )
+                            )
                         }
-                    }
-                }
-                Section(header: Text("Haltestellen")) {
-                    List(searchResults, id: \.self) { stop in
-                        StopRow(stop: stop)
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                if filter.start {
-                                    filter.startStop = ConnectionStop(displayName: stop.getFullName(), stop: stop)
-                                } else {
-                                    filter.endStop = ConnectionStop(displayName: stop.getFullName(), stop: stop)
-                                }
-                                dismiss()
-                            }
-                    }
-                }
-            }
-            .navigationTitle(filter.start ? "🏠 Startpunkt" : "🏠 Zielpunkt")
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-            .toolbar {
-                ToolbarItem(placement: ToolbarItemPlacement.cancellationAction) {
-                    Button("Schließen") {
                         dismiss()
                     }
                 }
-                ToolbarItem(placement: ToolbarItemPlacement.confirmationAction) {
-                    Button {
-                        locationManager.requestCurrentLocation()
-                    } label: {
-                        Label("", systemImage: "location")
+                HStack {
+                    if contactName != "" {
+                        Text("📒 \(contactName)")
+                            .lineLimit(1)
+                    } else {
+                        Text("📒 Kontakt auswählen")
+                            .foregroundColor(Color.gray)
+                            .lineLimit(1)
+                    }
+                    Spacer()
+                }
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    showPicker.toggle()
+                }
+            }
+            if addresses.count > 0 {
+                Section(header: Text("Kontakt-Adressen")) {
+                    List(addresses, id: \.self) { labeledAddress in
+                        HStack {
+                            Text(
+                                "\(labeledAddress.value.street), \(labeledAddress.value.postalCode) \(labeledAddress.value.city)"
+                            )
+                            .lineLimit(1)
+                            Spacer()
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            selectContactAddress(address: labeledAddress.value)
+                        }
                     }
                 }
             }
-        }
-        .dynamicTypeSize(.medium ... .large)
-        .task(id: searchText) {
-            changePlace()
-        }
-        .alert("Bei diesem Kontakt ist keine Adresse hinterlegt.", isPresented: $showNoAddressAlert) {
-            Button {
-                // do nothing
-            } label: {
-                Text("OK")
-            }
-        }
-        .sheet(isPresented: $showPicker) {
-            ContactPicker { result in
-                switch result {
-                case .selectedContact(let contact):
-                    selectContact(contact: contact)
-                case .cancelled:
-                    // Handle cancellation
-                    break
+            Section(header: Text("Haltestellen")) {
+                List(searchResults, id: \.self) { stop in
+                    StopRow(stop: stop)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if filter.start {
+                                filter.startStop = ConnectionStop(
+                                    displayName: stop.getFullName(),
+                                    stop: stop
+                                )
+                            } else {
+                                filter.endStop = ConnectionStop(
+                                    displayName: stop.getFullName(),
+                                    stop: stop
+                                )
+                            }
+                            dismiss()
+                        }
                 }
             }
-                .dynamicTypeSize(.medium ... .large)
+        }
+        .navigationTitle(filter.start ? "🏠 Startpunkt" : "🏠 Zielpunkt")
+        .toolbar {
+            ToolbarItem(placement: ToolbarItemPlacement.cancellationAction) {
+                Button("Schließen") {
+                    dismiss()
+                }
+            }
+            ToolbarItem(placement: ToolbarItemPlacement.confirmationAction) {
+                Button {
+                    locationManager.requestCurrentLocation()
+                } label: {
+                    Label("", systemImage: "location")
+                }
+            }
         }
     }
+  
 
     var searchResults: [Stop] {
         stops = stops.sorted {
@@ -153,7 +185,10 @@ struct ConnectionStopSelectionView: View {
         if searchText.isEmpty {
             return stops
         } else {
-            return stops.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+            return stops
+                .filter {
+                    $0.name.lowercased().contains(searchText.lowercased())
+                }
         }
     }
 
@@ -167,15 +202,33 @@ struct ConnectionStopSelectionView: View {
             }
 
             if filter.start {
-                filter.startStop = ConnectionStop(displayName: contactName, location: StopCoordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude ))
+                filter.startStop = ConnectionStop(
+                    displayName: contactName,
+                    location: StopCoordinate(
+                        latitude: location.coordinate.latitude,
+                        longitude: location.coordinate.longitude
+                    )
+                )
             } else {
-                filter.endStop = ConnectionStop(displayName: contactName, location: StopCoordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+                filter.endStop = ConnectionStop(
+                    displayName: contactName,
+                    location: StopCoordinate(
+                        latitude: location.coordinate.latitude,
+                        longitude: location.coordinate.longitude
+                    )
+                )
 
                 if filter.startStop == nil {
                     locationManager.requestCurrentLocationComplete {
                         locationManager.lookUpCurrentLocation { mapItem in
                             if let mapItem {
-                                filter.startStop = ConnectionStop(displayName: mapItem.singleLineAddress, location: StopCoordinate(latitude: locationManager.location?.latitude ?? 0, longitude: locationManager.location?.longitude ?? 0))
+                                filter.startStop = ConnectionStop(
+                                    displayName: mapItem.singleLineAddress,
+                                    location: StopCoordinate(
+                                        latitude: locationManager.location?.latitude ?? 0,
+                                        longitude: locationManager.location?.longitude ?? 0
+                                    )
+                                )
                             }
                         }
                     }
