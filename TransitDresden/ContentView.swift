@@ -16,7 +16,6 @@ struct ContentView: View {
     // @State var openingDeparture = departureM.Departures[0]
     @StateObject var locationManager = LocationManager()
     @StateObject var favoriteStops = FavoriteStop()
-    @StateObject var pushTokenHistory = PushTokenHistory()
     @StateObject var stopManager = StopManager()
 
     var body: some View {
@@ -52,7 +51,6 @@ struct ContentView: View {
         })*/
         .environmentObject(locationManager)
         .environmentObject(favoriteStops)
-        .environmentObject(pushTokenHistory)
         .environmentObject(stopManager)
         .onOpenURL { url in
             goToStop(url: url)

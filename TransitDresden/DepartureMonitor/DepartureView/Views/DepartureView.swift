@@ -11,13 +11,11 @@ import ActivityKit
 struct DepartureView: View {
     var stop: Stop
     @EnvironmentObject var favoriteStops: FavoriteStop
-    @EnvironmentObject var pushTokenHistory: PushTokenHistory
     @State var stopEvents: [StopEvent] = []
     @State private var searchText = ""
     @State private var isLoaded = false
     @State private var dateTime = Date.now
     @State private var showingSuccessAlert = false
-    @State private var showingErrorAlert = false
     @StateObject var departureFilter = DepartureFilter()
 
     var body: some View {
@@ -144,13 +142,6 @@ struct DepartureView: View {
                 Text("OK")
             }
         }
-        .alert("Die Live-Aktivität wurde nicht korrekt registriert. Sie wird nicht aktualisiert.", isPresented: $showingErrorAlert) {
-            Button {
-                // do nothing
-            } label: {
-                Text("OK")
-            }
-        }
 
         .task(id: stop.id, priority: .userInitiated) {
             await getDeparture()
@@ -246,51 +237,14 @@ struct DepartureView: View {
             let activityContent = ActivityContent(state: state, staleDate: Calendar.current.date(byAdding: .minute, value: 30, to: Date())!)
 
             do {
-                let activity = try Activity.request(attributes: attributes, content: activityContent, pushType: .token)
+                let activity = try Activity.request(attributes: attributes, content: activityContent, pushType: nil)
                 print("Requested an activity \(String(activity.id)).")
 
                 showingSuccessAlert = true
-
-                Task {
-                    for await data in activity.pushTokenUpdates {
-                        let token = data.map {String(format: "%02x", $0)}.joined()
-                        saveAcitivityOnServer(stopEvent: stopEvent, token: token)
-                    }
-                }
             } catch {
                 print("DepartureMonitor Live Activity Start Error: \(error)")
             }
         }
-    }
-
-    func saveAcitivityOnServer(stopEvent: StopEvent, token: String) {
-        if pushTokenHistory.isInHistory(token: token) {
-            return
-        }
-        pushTokenHistory.add(token: token)
-
-        let url = URL(string: "https://dvb.hsrv.me/api/activity_v2")!
-        let date = getISO8601Date(dateString: stopEvent.departureTimePlanned)
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = try? JSONEncoder().encode(ActivityRequest(token: token, stopID: stop.gid, line: stopEvent.transportation.id, tripCode: String(stopEvent.transportation.properties.tripCode ?? 0), date: getDateStampURL(date: date), time: getTimeStampURL(date: date)))
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Transit Dresden", forHTTPHeaderField: "User-Agent")
-
-        let task = URLSession.shared.dataTask(with: request) {(data, _, error) in
-            guard error == nil else {
-                print("DepartureMonitor Live Activity Request error: \(error!)")
-                showingErrorAlert = true
-                return
-            }
-
-            guard data != nil else {
-                print("DepartureMonitor Live Activity Request: No data")
-                showingErrorAlert = true
-                return
-            }
-        }
-        task.resume()
     }
 }
 
@@ -300,6 +254,5 @@ struct DepartureView: View {
             DepartureView(stop: stops[100])
         }
             .environmentObject(FavoriteStop())
-            .environmentObject(PushTokenHistory())
     }
  }
