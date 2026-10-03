@@ -9,8 +9,8 @@ import SwiftUI
 import BackgroundTasks
 
 struct ContentView: View {
-    @State var selection = 1
-    @State var oldSelection = 1
+    @State var selection = 0
+    @State var oldSelection = 0
     @State var showingSheet = false
     @State var openingStop = stops[0]
     // @State var openingDeparture = departureM.Departures[0]
@@ -34,6 +34,9 @@ struct ContentView: View {
             }
             oldSelection = selection
         }) {
+            GoView().tabItem {
+                Label("Los", systemImage: "location.north.circle")
+            }.tag(0)
             StopsView().tabItem {
                 Label("Abfahrten", systemImage: "h.circle")
             }.tag(1)

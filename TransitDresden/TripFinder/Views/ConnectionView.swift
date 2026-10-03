@@ -18,6 +18,7 @@ struct ConnectionView: View {
     @State var showingAlert = false
     @State var showingAlertEqual = false
     @State var showingSaveAlert = false
+    @State var showingLoadError = false
     @State var dateTime = Date.now
     @State var isArrivalTime = 0 // false
     @State var trip: Trip?
@@ -74,6 +75,9 @@ struct ConnectionView: View {
                 } label: {
                     Text("OK")
                 }
+            }
+            .alert("Die Verbindungen konnten nicht geladen werden.", isPresented: $showingLoadError) {
+                Button("OK") {}
             }
             .alert("Wie soll der Favorit gespeichert werden?", isPresented: $showingSaveAlert) {
                 TextField("Name", text: $favoriteName)
@@ -310,61 +314,18 @@ struct ConnectionView: View {
             return
         }
 
-        var url = URL(string: "https://webapi.vvo-online.de/tr/trips")!
-        if isNext {
-            url = URL(string: "https://webapi.vvo-online.de/tr/prevnext")!
-        }
-        var request = URLRequest(url: url, timeoutInterval: 20)
-        request.httpMethod = "POST"
-        request.httpBody = try? JSONEncoder().encode(requestData)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Transit Dresden", forHTTPHeaderField: "User-Agent")
-
         do {
-            let (content, _) = try await URLSession.shared.data(for: request)
-
-            let decoder = JSONDecoder()
+            let trip = try await TripService.fetchTrips(requestData!, isNext: isNext)
             numbernext = 0
-            self.trip = try decoder.decode(Trip.self, from: content)
-
-            isLoading = false
+            self.trip = trip
         } catch {
-            print("error: \(error)")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                Task {
-                    await getTripData(isNext: isNext)
-                }
-            }
+            showingLoadError = true
         }
+        isLoading = false
     }
 
     func getStandardSettings() -> TripStandardSettings {
-        var mot: [String] = []
-        if departureFilter.tram {
-            mot.append("Tram")
-        }
-        if departureFilter.bus {
-            mot.append("CityBus")
-            mot.append("IntercityBus")
-            mot.append("PlusBus")
-        }
-        if departureFilter.suburbanRailway {
-            mot.append("SuburbanRailway")
-        }
-        if departureFilter.train {
-            mot.append("Train")
-        }
-        if departureFilter.cableway {
-            mot.append("Cableway")
-        }
-        if departureFilter.ferry {
-            mot.append("Ferry")
-        }
-//        if (departureFilter.taxi) {
-//            mot.append("HailedSharedTaxi")
-//        }
-
-        return TripStandardSettings(mot: mot)
+        TripService.standardSettings(from: departureFilter)
     }
 
     func saveFavorite() {

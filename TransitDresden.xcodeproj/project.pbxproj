@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79E45885FD728FC33649E226 /* TripService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D4A7BD560C57076DE0716 /* TripService.swift */; };
+		4DDFBBE8465EE755A05CA75D /* GoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C888D44ABC55AF2D6BB55E /* GoView.swift */; };
+		D7995E62582C0937AFD1927B /* GoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E07D7A50FC615885E76396 /* GoViewModel.swift */; };
 		962643EC2EC4BCD100AF4358 /* TransitIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 962643EB2EC4BCD100AF4358 /* TransitIcon.icon */; };
 		962643ED2EC4BD0E00AF4358 /* TransitIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 962643EB2EC4BCD100AF4358 /* TransitIcon.icon */; };
 		D011F07C2C523C73000BAB5C /* RegularStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D011F07B2C523C73000BAB5C /* RegularStop.swift */; };
@@ -239,6 +242,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E49D4A7BD560C57076DE0716 /* TripService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripService.swift; sourceTree = "<group>"; };
+		F5C888D44ABC55AF2D6BB55E /* GoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoView.swift; sourceTree = "<group>"; };
+		70E07D7A50FC615885E76396 /* GoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoViewModel.swift; sourceTree = "<group>"; };
 		962643EB2EC4BCD100AF4358 /* TransitIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = TransitIcon.icon; sourceTree = "<group>"; };
 		D011C45829F58875008DF9E1 /* MonitorWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonitorWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D011C45929F588B7008DF9E1 /* MonitorIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonitorIntents.entitlements; sourceTree = "<group>"; };
@@ -372,6 +378,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EDCCAF9F27F98FA03804B76A /* Go */ = {
+			isa = PBXGroup;
+			children = (
+				F5C888D44ABC55AF2D6BB55E /* GoView.swift */,
+				70E07D7A50FC615885E76396 /* GoViewModel.swift */,
+			);
+			path = Go;
+			sourceTree = "<group>";
+		};
 		D03A267629EEB6C9005B0600 = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +418,7 @@
 			children = (
 				D040EC2929EEF92C002DFEBF /* TransitDresden.entitlements */,
 				D040EC2829EEEC2B002DFEBF /* Info.plist */,
+				EDCCAF9F27F98FA03804B76A /* Go */,
 				F15FE0E12DE0E9840096C79E /* Shared */,
 				F15FE0E32DE0EBAB0096C79E /* StopsView */,
 				F15FE0DA2DE0E89B0096C79E /* DepartureMonitor */,
@@ -753,6 +769,7 @@
 			children = (
 				D040EC2129EED774002DFEBF /* DateParser.swift */,
 				D0142C462A10E7CC00646C94 /* ContactPicker.swift */,
+				E49D4A7BD560C57076DE0716 /* TripService.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1013,6 +1030,9 @@
 				D0C1ECC829F28C2F001D214D /* TripAttributes.swift in Sources */,
 				D0BD66DE29F03446004E574C /* PartialRoute.swift in Sources */,
 				D03A268529EEB6C9005B0600 /* ContentView.swift in Sources */,
+				79E45885FD728FC33649E226 /* TripService.swift in Sources */,
+				4DDFBBE8465EE755A05CA75D /* GoView.swift in Sources */,
+				D7995E62582C0937AFD1927B /* GoViewModel.swift in Sources */,
 				D0C1ECBC29F2823E001D214D /* SingleTripView.swift in Sources */,
 				F1B8C03D2D6BC03B00F77CE4 /* DepartureRequestSingle.swift in Sources */,
 				D03A269E29EEBC3F005B0600 /* StopsView.swift in Sources */,
