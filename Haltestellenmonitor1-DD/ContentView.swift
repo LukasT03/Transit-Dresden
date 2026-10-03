@@ -44,9 +44,6 @@ struct ContentView: View {
             MapView().tabItem {
                 Label("Karte", systemImage: "map")
             }.tag(3)
-            About().tabItem {
-                Label("Über", systemImage: "info.circle.fill")
-            }.tag(4)
         }
         /*.sheet(isPresented: $showingSheet, content: {
             NavigationStack {

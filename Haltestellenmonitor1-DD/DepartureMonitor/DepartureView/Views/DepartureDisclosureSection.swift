@@ -17,36 +17,42 @@ struct DepartureDisclosureSection: View {
                 Text("Straßenbahn")
             }
         }
+        .tint(.accent)
         Toggle(isOn: $departureFilter.bus) {
             HStack {
                 Text(getIconStandard(motType: .Bus))
                 Text("Bus")
             }
         }
+        .tint(.accent)
         Toggle(isOn: $departureFilter.suburbanRailway) {
             HStack {
                 Text(getIconStandard(motType: .Train))
                 Text("S-Bahn")
             }
         }
+        .tint(.accent)
         Toggle(isOn: $departureFilter.train) {
             HStack {
                 Text(getIconStandard(motType: .Train))
                 Text("Zug")
             }
         }
+        .tint(.accent)
         Toggle(isOn: $departureFilter.cableway) {
             HStack {
                 Text(getIconStandard(motType: .CableCar))
                 Text("Standseilbahn")
             }
         }
+        .tint(.accent)
         Toggle(isOn: $departureFilter.ferry) {
             HStack {
                 Text(getIconStandard(motType: .Boat))
                 Text("Fähre")
             }
         }
+        .tint(.accent)
     }
 }
 

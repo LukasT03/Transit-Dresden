@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D00059C52A52F3800007468A /* Haltestellenmonitor1_DDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00059C42A52F3800007468A /* Haltestellenmonitor1_DDTests.swift */; };
+		962643EC2EC4BCD100AF4358 /* DVB.icon in Resources */ = {isa = PBXBuildFile; fileRef = 962643EB2EC4BCD100AF4358 /* DVB.icon */; };
+		962643ED2EC4BD0E00AF4358 /* DVB.icon in Resources */ = {isa = PBXBuildFile; fileRef = 962643EB2EC4BCD100AF4358 /* DVB.icon */; };
 		D011F07C2C523C73000BAB5C /* RegularStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D011F07B2C523C73000BAB5C /* RegularStop.swift */; };
 		D011F07E2C523C97000BAB5C /* DeparturePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D011F07D2C523C97000BAB5C /* DeparturePlatform.swift */; };
 		D011F07F2C523D9D000BAB5C /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66D929F03056004E574C /* Trip.swift */; };
@@ -262,8 +263,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		962643EB2EC4BCD100AF4358 /* DVB.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = DVB.icon; sourceTree = "<group>"; };
 		D00059C22A52F3800007468A /* Haltestellenmonitor1-DDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Haltestellenmonitor1-DDTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D00059C42A52F3800007468A /* Haltestellenmonitor1_DDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haltestellenmonitor1_DDTests.swift; sourceTree = "<group>"; };
 		D011C45829F58875008DF9E1 /* MonitorWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonitorWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D011C45929F588B7008DF9E1 /* MonitorIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonitorIntents.entitlements; sourceTree = "<group>"; };
 		D011F07B2C523C73000BAB5C /* RegularStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularStop.swift; sourceTree = "<group>"; };
@@ -405,24 +406,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D00059C32A52F3800007468A /* Haltestellenmonitor1-DDTests */ = {
-			isa = PBXGroup;
-			children = (
-				D00059C42A52F3800007468A /* Haltestellenmonitor1_DDTests.swift */,
-			);
-			path = "Haltestellenmonitor1-DDTests";
-			sourceTree = "<group>";
-		};
 		D03A267629EEB6C9005B0600 = {
 			isa = PBXGroup;
 			children = (
 				D011C45829F58875008DF9E1 /* MonitorWidgetExtension.entitlements */,
+				962643EB2EC4BCD100AF4358 /* DVB.icon */,
 				D03A269029EEB921005B0600 /* Data */,
 				D03A268129EEB6C9005B0600 /* Haltestellenmonitor1-DD */,
 				D0BD668629EFE0AA004E574C /* MonitorWidget */,
 				D0BD66AC29EFECF1004E574C /* MonitorIntents */,
 				D0D1995329F40AAA00946D87 /* WatchMonitor Watch App */,
-				D00059C32A52F3800007468A /* Haltestellenmonitor1-DDTests */,
 				D0BD664829EFDD50004E574C /* Frameworks */,
 				D03A268029EEB6C9005B0600 /* Products */,
 			);
@@ -1019,6 +1012,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				962643EC2EC4BCD100AF4358 /* DVB.icon in Resources */,
 				D03A268A29EEB6C9005B0600 /* Preview Assets.xcassets in Resources */,
 				D03A268729EEB6C9005B0600 /* Assets.xcassets in Resources */,
 				D0BD66E429F03BE6004E574C /* trip.json in Resources */,
@@ -1049,6 +1043,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				962643ED2EC4BD0E00AF4358 /* DVB.icon in Resources */,
 				D0D1996529F40B4E00946D87 /* trip.json in Resources */,
 				D0D1995C29F40AAA00946D87 /* Preview Assets.xcassets in Resources */,
 				D0D1995929F40AAA00946D87 /* Assets.xcassets in Resources */,
@@ -1069,7 +1064,6 @@
 				F15FE0EC2DE0F01C0096C79E /* Point.swift in Sources */,
 				D011F0862C523DA7000BAB5C /* Route.swift in Sources */,
 				D011F0822C523D9E000BAB5C /* Trip.swift in Sources */,
-				D00059C52A52F3800007468A /* Haltestellenmonitor1_DDTests.swift in Sources */,
 				D011F0922C523DC7000BAB5C /* DeparturePlatform.swift in Sources */,
 				D09A50522C4FA249006CB5D6 /* StopEvent.swift in Sources */,
 				D09A505F2C4FBF43006CB5D6 /* DepartureRequest.swift in Sources */,
@@ -1310,12 +1304,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
-				DEVELOPMENT_TEAM = WGL37RNHJ6;
+				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 2.3;
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.hanashi.Haltestellenmonitor1-DDTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukastuchscherer.dvb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1328,12 +1324,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
-				DEVELOPMENT_TEAM = WGL37RNHJ6;
+				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 2.3;
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.hanashi.Haltestellenmonitor1-DDTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukastuchscherer.dvb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1464,74 +1462,84 @@
 		D03A268E29EEB6C9005B0600 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = DVB;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Haltestellenmonitor1-DD/Haltestellenmonitor1-DD.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"Haltestellenmonitor1-DD/Preview Content\"";
-				DEVELOPMENT_TEAM = WGL37RNHJ6;
+				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Haltestellenmonitor1-DD/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Haltestellenmonitor Dresden";
+				INFOPLIST_KEY_CFBundleDisplayName = DVB;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet um den Abstand zur nächsten Haltestelle zu berechnen.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet, um den Abstand zur nächsten Haltestelle zu berechnen.";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 3.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.Hanashi.Haltestellenmonitor1-DD";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukastuchscherer.transit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		D03A268F29EEB6C9005B0600 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = DVB;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Haltestellenmonitor1-DD/Haltestellenmonitor1-DD.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"Haltestellenmonitor1-DD/Preview Content\"";
-				DEVELOPMENT_TEAM = WGL37RNHJ6;
+				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Haltestellenmonitor1-DD/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Haltestellenmonitor Dresden";
+				INFOPLIST_KEY_CFBundleDisplayName = DVB;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet um den Abstand zur nächsten Haltestelle zu berechnen.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet, um den Abstand zur nächsten Haltestelle zu berechnen.";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 3.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.Hanashi.Haltestellenmonitor1-DD";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukastuchscherer.transit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1543,20 +1551,22 @@
 				CODE_SIGN_ENTITLEMENTS = MonitorWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = WGL37RNHJ6;
+				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MonitorWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MonitorWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet um den Abstand zur nächsten Haltestelle zu berechnen.";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Um Dir stets die nächste favorisierte Haltestelle anzuzeigen, benötigen wir Zugriff auf Standortdaten.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Um Dir stets die nächste favorisierte Haltestelle anzuzeigen, benötigen wir Zugriff auf Standortdaten.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Um Dir stets die nächste favorisierte Haltestelle anzuzeigen, benötigen wir Zugriff auf Standortdaten.";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 3.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.Hanashi.Haltestellenmonitor1-DD.MonitorWidget";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukastuchscherer.dvb.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1574,19 +1584,22 @@
 				CODE_SIGN_ENTITLEMENTS = MonitorWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = WGL37RNHJ6;
+				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MonitorWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MonitorWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet um den Abstand zur nächsten Haltestelle zu berechnen.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Um Dir stets die nächste favorisierte Haltestelle anzuzeigen, benötigen wir Zugriff auf Standortdaten.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Um Dir stets die nächste favorisierte Haltestelle anzuzeigen, benötigen wir Zugriff auf Standortdaten.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Um Dir stets die nächste favorisierte Haltestelle anzuzeigen, benötigen wir Zugriff auf Standortdaten.";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 3.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.Hanashi.Haltestellenmonitor1-DD.MonitorWidget";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukastuchscherer.dvb.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1602,19 +1615,20 @@
 				CODE_SIGN_ENTITLEMENTS = MonitorIntents/MonitorIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = WGL37RNHJ6;
+				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MonitorIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MonitorIntents;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet um den Abstand zur nächsten Haltestelle zu berechnen.";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 3.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.Hanashi.Haltestellenmonitor1-DD.MonitorIntents";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukastuchscherer.dvb.widget.intents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1630,19 +1644,20 @@
 				CODE_SIGN_ENTITLEMENTS = MonitorIntents/MonitorIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = WGL37RNHJ6;
+				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MonitorIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MonitorIntents;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet um den Abstand zur nächsten Haltestelle zu berechnen.";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 3.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.Hanashi.Haltestellenmonitor1-DD.MonitorIntents";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukastuchscherer.dvb.widget.intents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1655,62 +1670,62 @@
 		D0D1996129F40AAA00946D87 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = DVB;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchMonitor Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = WGL37RNHJ6;
+				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet um den Abstand zur nächsten Haltestelle zu berechnen.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "eu.Hanashi.Haltestellenmonitor1-DD";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.lukastuchscherer.dvb;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 3.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.Hanashi.Haltestellenmonitor1-DD.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukastuchscherer.dvb.watch;
 				PRODUCT_NAME = "Haltestellenmonitor Dresden";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Debug;
 		};
 		D0D1996229F40AAA00946D87 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = DVB;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchMonitor Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = WGL37RNHJ6;
+				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet um den Abstand zur nächsten Haltestelle zu berechnen.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "eu.Hanashi.Haltestellenmonitor1-DD";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.lukastuchscherer.dvb;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 3.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = "eu.Hanashi.Haltestellenmonitor1-DD.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukastuchscherer.dvb.watch;
 				PRODUCT_NAME = "Haltestellenmonitor Dresden";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
 		};

@@ -160,46 +160,6 @@ struct MapViewNew: View {
             MapUserLocationButton()
             MapCompass()
         }
-        .overlay {
-            ZStack(alignment: .trailing) {
-                HStack {
-                    Spacer()
-                    VStack {
-                        Menu {
-                            Button(action: {
-                                mapStyle = .standard
-                            }, label: {
-                                Text("Standard")
-                            })
-                            Button(action: {
-                                mapStyle = .imagery
-                            }, label: {
-                                Text("Satellit")
-                            })
-                        } label: {
-                            Image(systemName: "map")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20, height: 20)
-                                .padding(12)
-                                .background(RoundedRectangle(cornerRadius: 8.0)
-                                    .fill(Color(UIColor { traitCollection in
-                                        return traitCollection.userInterfaceStyle == .dark ?
-                                            .systemGray5 :
-                                        UIColor(_colorLiteralRed: 0.941, green: 0.976, blue: 0.965, alpha: 1)
-                                    }))
-                                        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 0)
-                                )
-                                .frame(width: 40, height: 40)
-                                .padding(.trailing, 8)
-                                .padding(.top, 7)
-
-                        }.padding(.trailing, 50)
-                        Spacer()
-                    }
-                }
-            }
-        }
     }
 
     func isCoordinateInRegion(_ coordinate: CLLocationCoordinate2D, region: MKCoordinateRegion) -> Bool {

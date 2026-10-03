@@ -40,6 +40,7 @@ struct DepartureView: View {
                                     Text("Jetzt")
                                         .accessibilityHint("Auf aktuellen Zeitpunkt zurücksetzen")
                                 }
+                                .buttonStyle(.glassProminent)
                             }
                         }
                         Section {
@@ -90,6 +91,7 @@ struct DepartureView: View {
                             } label: {
                                 Text("Jetzt")
                             }
+                            .buttonStyle(.glassProminent)
                         }
                     }
                     .disabled(true)

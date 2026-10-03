@@ -199,6 +199,7 @@ struct ConnectionView: View {
                             Text("Jetzt")
                                 .accessibilityHint("Auf aktuellen Zeitpunkt zurücksetzen")
                         }
+                        .buttonStyle(.glassProminent)
                     }
                     Picker("", selection: $isArrivalTime) {
                         Text("Abfahrt").tag(0)
@@ -207,6 +208,7 @@ struct ConnectionView: View {
                             .accessibilityHint("Die gewählte Zeit ist der Ankunftszeitpunkt")
                     }
                     .pickerStyle(.segmented)
+                    .padding(.top, 3)
 
                 }
             }
@@ -216,19 +218,14 @@ struct ConnectionView: View {
                     Button {
                         showingSaveAlert.toggle()
                     } label: {
-                        Image(systemName: "heart")
+                        Image(systemName: "star")
                             .resizable()
-                            .frame(width: 20, height: 20)
-                    }.frame(width: 50, height: buttonHeight)
-                        .background(RoundedRectangle(cornerRadius: 8).fill(Color(UIColor { traitCollection in
-                            return traitCollection.userInterfaceStyle == .dark ?
-                                .systemGray5 :
-                                .systemBackground
-                        })))
+                            .frame(width: 27, height: 27)
+                    }.frame(width: 38, height: buttonHeight)
                         .disabled(filter.startStop != nil && filter.endStop != nil ? false : true)
                         .accessibilityLabel("Verbindung als Favorit speichern")
 
-                    Spacer()
+                    Spacer(minLength: 11)
 
                     Button {
                         Task {
@@ -241,23 +238,11 @@ struct ConnectionView: View {
                         }
                     } label: {
                         Text("Verbindungen anzeigen")
-                            .frame(maxWidth: .infinity)
-                            .foregroundStyle(Color(UIColor { traitCollection in
-                                if traitCollection.userInterfaceStyle == .dark {
-                                    return .systemGray6
-                                } else {
-                                    return .white
-                                }
-                            }
-                        ))
+                            .frame(maxWidth: .infinity, minHeight: 30)
                     }
-                    .buttonStyle(BorderedProminentButtonStyle())
-                    .frame(height: buttonHeight)
-
-                    // .disabled(filter.startStop != nil && filter.endStop != nil ? false : true)
-                }.buttonStyle(BorderlessButtonStyle()) // used so the hitbox of the buttons is correct
-                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)) // remove padding
-            }.listRowBackground(Color.clear)
+                    .buttonStyle(.glassProminent)
+                }
+            }
 
             if trip?.Routes != nil {
                 /*Button {

@@ -31,14 +31,14 @@ struct StopsView: View {
                         Button {
                             favoriteStops.remove(stopID: stop.stopID)
                         } label: {
-                            Label("Unstar", systemImage: "star.fill")
+                            Label("", systemImage: "star.slash")
                         }
                         .tint(.red)
                     } else {
                         Button {
                             favoriteStops.add(stopID: stop.stopID)
                         } label: {
-                            Label("Star", systemImage: "star")
+                            Label("", systemImage: "star")
                         }
                         .tint(.yellow)
                     }
@@ -51,6 +51,7 @@ struct StopsView: View {
                 } label: {
                     Label("Position aktualisieren", systemImage: "location")
                 }
+                .tint(.accent)
             }
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         } detail: {
