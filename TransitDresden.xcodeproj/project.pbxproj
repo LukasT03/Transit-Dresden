@@ -14,24 +14,18 @@
 		D011F07F2C523D9D000BAB5C /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66D929F03056004E574C /* Trip.swift */; };
 		D011F0802C523D9D000BAB5C /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66D929F03056004E574C /* Trip.swift */; };
 		D011F0812C523D9E000BAB5C /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66D929F03056004E574C /* Trip.swift */; };
-		D011F0822C523D9E000BAB5C /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66D929F03056004E574C /* Trip.swift */; };
 		D011F0832C523DA5000BAB5C /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66DB29F030BD004E574C /* Route.swift */; };
 		D011F0842C523DA6000BAB5C /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66DB29F030BD004E574C /* Route.swift */; };
 		D011F0852C523DA6000BAB5C /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66DB29F030BD004E574C /* Route.swift */; };
-		D011F0862C523DA7000BAB5C /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66DB29F030BD004E574C /* Route.swift */; };
 		D011F0872C523DB4000BAB5C /* PartialRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66DD29F03446004E574C /* PartialRoute.swift */; };
 		D011F0882C523DB5000BAB5C /* PartialRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66DD29F03446004E574C /* PartialRoute.swift */; };
 		D011F0892C523DB5000BAB5C /* PartialRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66DD29F03446004E574C /* PartialRoute.swift */; };
-		D011F08A2C523DB6000BAB5C /* PartialRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66DD29F03446004E574C /* PartialRoute.swift */; };
 		D011F08B2C523DBF000BAB5C /* RegularStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D011F07B2C523C73000BAB5C /* RegularStop.swift */; };
 		D011F08C2C523DBF000BAB5C /* RegularStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D011F07B2C523C73000BAB5C /* RegularStop.swift */; };
 		D011F08D2C523DBF000BAB5C /* RegularStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D011F07B2C523C73000BAB5C /* RegularStop.swift */; };
-		D011F08E2C523DC0000BAB5C /* RegularStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = D011F07B2C523C73000BAB5C /* RegularStop.swift */; };
 		D011F08F2C523DC5000BAB5C /* DeparturePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D011F07D2C523C97000BAB5C /* DeparturePlatform.swift */; };
 		D011F0902C523DC6000BAB5C /* DeparturePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D011F07D2C523C97000BAB5C /* DeparturePlatform.swift */; };
 		D011F0912C523DC6000BAB5C /* DeparturePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D011F07D2C523C97000BAB5C /* DeparturePlatform.swift */; };
-		D011F0922C523DC7000BAB5C /* DeparturePlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D011F07D2C523C97000BAB5C /* DeparturePlatform.swift */; };
-		D011F0932C523DE4000BAB5C /* Mot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD66E129F03949004E574C /* Mot.swift */; };
 		D0142C3A2A0F909E00646C94 /* DepartureBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0142C392A0F909E00646C94 /* DepartureBinding.swift */; };
 		D0142C3B2A0F90AA00646C94 /* DepartureBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0142C392A0F909E00646C94 /* DepartureBinding.swift */; };
 		D0142C3C2A0F90AB00646C94 /* DepartureBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0142C392A0F909E00646C94 /* DepartureBinding.swift */; };
@@ -71,12 +65,10 @@
 		D09A504F2C4FA249006CB5D6 /* StopEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A504D2C4FA249006CB5D6 /* StopEvent.swift */; };
 		D09A50502C4FA249006CB5D6 /* StopEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A504D2C4FA249006CB5D6 /* StopEvent.swift */; };
 		D09A50512C4FA249006CB5D6 /* StopEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A504D2C4FA249006CB5D6 /* StopEvent.swift */; };
-		D09A50522C4FA249006CB5D6 /* StopEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A504D2C4FA249006CB5D6 /* StopEvent.swift */; };
 		D09A505B2C4FBF43006CB5D6 /* DepartureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A505A2C4FBF43006CB5D6 /* DepartureRequest.swift */; };
 		D09A505C2C4FBF43006CB5D6 /* DepartureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A505A2C4FBF43006CB5D6 /* DepartureRequest.swift */; };
 		D09A505D2C4FBF43006CB5D6 /* DepartureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A505A2C4FBF43006CB5D6 /* DepartureRequest.swift */; };
 		D09A505E2C4FBF43006CB5D6 /* DepartureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A505A2C4FBF43006CB5D6 /* DepartureRequest.swift */; };
-		D09A505F2C4FBF43006CB5D6 /* DepartureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09A505A2C4FBF43006CB5D6 /* DepartureRequest.swift */; };
 		D0BD668429EFE0AA004E574C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BD664929EFDD50004E574C /* WidgetKit.framework */; };
 		D0BD668529EFE0AA004E574C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BD664B29EFDD50004E574C /* SwiftUI.framework */; };
 		D0BD668829EFE0AA004E574C /* MonitorWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD668729EFE0AA004E574C /* MonitorWidgetBundle.swift */; };
@@ -172,7 +164,6 @@
 		F13960532DCA73E5004AC9AA /* DepartureRowSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13960522DCA73DC004AC9AA /* DepartureRowSkeleton.swift */; };
 		F13960572DCA7F1F004AC9AA /* SingleTripRowSkeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13960562DCA7F1F004AC9AA /* SingleTripRowSkeleton.swift */; };
 		F1520EE32AE96E5A001E3E05 /* widgetLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1520EE12AE96E5A001E3E05 /* widgetLocationManager.swift */; };
-		F15FE0EC2DE0F01C0096C79E /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FE0EB2DE0F01C0096C79E /* Point.swift */; };
 		F15FE0ED2DE0F01C0096C79E /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FE0EB2DE0F01C0096C79E /* Point.swift */; };
 		F15FE0EE2DE0F01C0096C79E /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FE0EB2DE0F01C0096C79E /* Point.swift */; };
 		F15FE0EF2DE0F01C0096C79E /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15FE0EB2DE0F01C0096C79E /* Point.swift */; };
@@ -269,7 +260,7 @@
 		D0142C592A11285700646C94 /* FavoriteConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteConnection.swift; sourceTree = "<group>"; };
 		D0142C5B2A1128E900646C94 /* TripRequestShort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRequestShort.swift; sourceTree = "<group>"; };
 		D0142C5E2A112CA900646C94 /* StopCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopCoordinate.swift; sourceTree = "<group>"; };
-		D03A267F29EEB6C9005B0600 /* TransitDresden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TransitDresden.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D03A267F29EEB6C9005B0600 /* TransitDresden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransitDresden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03A268229EEB6C9005B0600 /* TransitDresdenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitDresdenApp.swift; sourceTree = "<group>"; };
 		D03A268429EEB6C9005B0600 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D03A268629EEB6C9005B0600 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -284,7 +275,7 @@
 		D040EC2329EEDE3C002DFEBF /* DepartureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureView.swift; sourceTree = "<group>"; };
 		D040EC2629EEEB85002DFEBF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D040EC2829EEEC2B002DFEBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		D040EC2929EEF92C002DFEBF /* TransitDresden.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TransitDresden.entitlements"; sourceTree = "<group>"; };
+		D040EC2929EEF92C002DFEBF /* TransitDresden.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TransitDresden.entitlements; sourceTree = "<group>"; };
 		D040EC2A29EEFA3E002DFEBF /* FavoriteStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStop.swift; sourceTree = "<group>"; };
 		D040EC2D29EF0371002DFEBF /* StopManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopManager.swift; sourceTree = "<group>"; };
 		D09A504D2C4FA249006CB5D6 /* StopEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEvent.swift; sourceTree = "<group>"; };
@@ -433,7 +424,7 @@
 				D03A268629EEB6C9005B0600 /* Assets.xcassets */,
 				D03A268829EEB6C9005B0600 /* Preview Content */,
 			);
-			path = "TransitDresden";
+			path = TransitDresden;
 			sourceTree = "<group>";
 		};
 		D03A268829EEB6C9005B0600 /* Preview Content */ = {
@@ -850,10 +841,10 @@
 				D0BD66B129EFECF1004E574C /* PBXTargetDependency */,
 				D0D1995E29F40AAA00946D87 /* PBXTargetDependency */,
 			);
-			name = "TransitDresden";
+			name = TransitDresden;
 			packageProductDependencies = (
 			);
-			productName = "TransitDresden";
+			productName = TransitDresden;
 			productReference = D03A267F29EEB6C9005B0600 /* TransitDresden.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -922,7 +913,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 2710;
 				TargetAttributes = {
 					D03A267E29EEB6C9005B0600 = {
 						CreatedOnToolsVersion = 14.3;
@@ -1268,6 +1259,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1285,11 +1277,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1330,6 +1323,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1342,10 +1336,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -1358,14 +1353,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = TransitIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = "TransitDresden/TransitDresden.entitlements";
+				CODE_SIGN_ENTITLEMENTS = TransitDresden/TransitDresden.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"TransitDresden/Preview Content\"";
-				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TransitDresden/Info.plist";
+				INFOPLIST_FILE = TransitDresden/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Transit;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet, um den Abstand zur nächsten Haltestelle zu berechnen.";
@@ -1400,14 +1394,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = TransitIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = "TransitDresden/TransitDresden.entitlements";
+				CODE_SIGN_ENTITLEMENTS = TransitDresden/TransitDresden.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"TransitDresden/Preview Content\"";
-				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TransitDresden/Info.plist";
+				INFOPLIST_FILE = TransitDresden/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Transit;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet, um den Abstand zur nächsten Haltestelle zu berechnen.";
@@ -1444,7 +1437,6 @@
 				CODE_SIGN_ENTITLEMENTS = MonitorWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MonitorWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MonitorWidget;
@@ -1452,7 +1444,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Um Dir stets die nächste favorisierte Haltestelle anzuzeigen, benötigen wir Zugriff auf Standortdaten.";
 				INFOPLIST_KEY_NSLocationUsageDescription = "Um Dir stets die nächste favorisierte Haltestelle anzuzeigen, benötigen wir Zugriff auf Standortdaten.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Um Dir stets die nächste favorisierte Haltestelle anzuzeigen, benötigen wir Zugriff auf Standortdaten.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1477,7 +1469,6 @@
 				CODE_SIGN_ENTITLEMENTS = MonitorWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MonitorWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MonitorWidget;
@@ -1485,7 +1476,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Um Dir stets die nächste favorisierte Haltestelle anzuzeigen, benötigen wir Zugriff auf Standortdaten.";
 				INFOPLIST_KEY_NSLocationUsageDescription = "Um Dir stets die nächste favorisierte Haltestelle anzuzeigen, benötigen wir Zugriff auf Standortdaten.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Um Dir stets die nächste favorisierte Haltestelle anzuzeigen, benötigen wir Zugriff auf Standortdaten.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1508,13 +1499,12 @@
 				CODE_SIGN_ENTITLEMENTS = MonitorIntents/MonitorIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MonitorIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MonitorIntents;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet um den Abstand zur nächsten Haltestelle zu berechnen.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1537,13 +1527,12 @@
 				CODE_SIGN_ENTITLEMENTS = MonitorIntents/MonitorIntents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MonitorIntents/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MonitorIntents;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Der Standort wird verwendet um den Abstand zur nächsten Haltestelle zu berechnen.";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1568,7 +1557,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchMonitor Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Transit;
@@ -1576,6 +1564,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.lukastuchscherer.transit;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1588,7 +1577,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+				WATCHOS_DEPLOYMENT_TARGET = 27.0;
 			};
 			name = Debug;
 		};
@@ -1600,7 +1589,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchMonitor Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = Y4R8JK38SC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Transit;
@@ -1608,6 +1596,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.lukastuchscherer.transit;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1620,7 +1609,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 26.0;
+				WATCHOS_DEPLOYMENT_TARGET = 27.0;
 			};
 			name = Release;
 		};
