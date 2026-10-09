@@ -9,7 +9,7 @@ Abfahrten, Verbindungen und Haltestellen für den ÖPNV in Dresden.
 
 ### Showcase
 <p align="left">
-  <img src="images/Example-Transit.PNG" width="350">
+  <img src="images/Example-Transit.png" width="350">
 </p>
 
 ## Anforderungen
