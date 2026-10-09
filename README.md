@@ -21,9 +21,9 @@ Abfahrten, Verbindungen und Haltestellen für den ÖPNV in Dresden.
 git clone https://github.com/LukasT03/Transit-Dresden
 ```
 
-1. Öffne `TransitDresden.xcodeproj` in Xcode
+1. Öffne `Transit Dresden.xcodeproj` in Xcode
 2. Wähle unter *Signing & Capabilities* dein eigenes Development Team
-3. Starte das Schema `TransitDresden` mit CMD + R
+3. Starte das Schema `Transit Dresden` mit CMD + R
 
 ## Lizenz
 Das Projekt steht, wie das Original, unter der GNU General Public License v3.0. [Für mehr Info siehe hier](LICENSE)

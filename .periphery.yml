@@ -1,4 +1,4 @@
-project: TransitDresden.xcodeproj
+project: Transit Dresden.xcodeproj
 retain_assign_only_properties: true
 schemes:
-- TransitDresden
+- Transit Dresden
