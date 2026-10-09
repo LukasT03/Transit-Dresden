@@ -15,8 +15,6 @@ struct TripRequest: Hashable, Codable {
     var destination: String
     var standardSettings: TripStandardSettings?
     var previous: Bool?
-    var numberprev: Int?
-    var numbernext: Int?
     var sessionId: String?
     var format: String = "json"
 }

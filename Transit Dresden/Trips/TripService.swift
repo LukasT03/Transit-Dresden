@@ -42,6 +42,26 @@ enum TripService {
     /// Abfragen je Haltestelle, damit jede Haltestelle nur einmal abgefragt wird, auch wenn sie mehrfach im Ablauf steht
     @MainActor private static var platformLookups: [String: Task<Set<DeparturePlatform>?, Never>] = [:]
 
+    /// Ein- und Ausstiege aller Verbindungen, an denen mehrere Steige bedient werden. Die Abfragen laufen
+    /// gleichzeitig und bleiben zwischengespeichert, beim Aktualisieren kosten sie also nichts.
+    @MainActor
+    static func stopsWithSeveralPlatforms(on routes: [Route]) async -> Set<RegularStop> {
+        await withTaskGroup(of: RegularStop?.self) { group in
+            for stop in Set(routes.flatMap(\.boardingAndAlightingStops)) {
+                group.addTask {
+                    await hasSeveralPlatforms(stop) ? stop : nil
+                }
+            }
+            var stops: Set<RegularStop> = []
+            for await stop in group {
+                if let stop {
+                    stops.insert(stop)
+                }
+            }
+            return stops
+        }
+    }
+
     /// Ob an einer Haltestelle mehrere Steige bedient werden. Grundlage sind die nächsten Abfahrten laut
     /// Abfahrtsmonitor, ergänzt um den Steig der Fahrt selbst (etwa ein reiner Ausstiegssteig an einer Endhaltestelle).
     /// Lässt es sich nicht ermitteln, gilt die Antwort "ja", damit der Steig im Zweifel sichtbar bleibt.
@@ -89,35 +109,5 @@ enum TripService {
         }
 
         var Departures: [Departure]?
-    }
-
-    // MARK: - Verkehrsmittel
-
-    /// Verkehrsmittel für die Anfrage aus dem Verkehrsmittel-Filter. Gegangen wird zügig:
-    /// Mit normaler Gehgeschwindigkeit plant der VVO so vorsichtig, dass gut schaffbare Verbindungen fehlen.
-    static func standardSettings(from filter: DepartureFilter) -> TripStandardSettings {
-        var mot: [String] = []
-        if filter.tram {
-            mot.append("Tram")
-        }
-        if filter.bus {
-            mot.append("CityBus")
-            mot.append("IntercityBus")
-            mot.append("PlusBus")
-        }
-        if filter.suburbanRailway {
-            mot.append("SuburbanRailway")
-        }
-        if filter.train {
-            mot.append("Train")
-        }
-        if filter.cableway {
-            mot.append("Cableway")
-        }
-        if filter.ferry {
-            mot.append("Ferry")
-        }
-
-        return TripStandardSettings(mot: mot, walkingSpeed: "Fast")
     }
 }

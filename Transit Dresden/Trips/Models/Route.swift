@@ -8,7 +8,6 @@
 import Foundation
 
 struct Route: Hashable, Codable {
-    var ShortDistance: Bool?
     var Interchanges: Int
     var PartialRoutes: [PartialRoute]
 }

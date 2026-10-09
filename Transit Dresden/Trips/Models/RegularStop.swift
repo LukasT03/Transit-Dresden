@@ -12,18 +12,15 @@ struct RegularStop: Hashable, Codable {
     var DepartureTime: String
     var ArrivalRealTime: String?
     var DepartureRealTime: String?
-    var Place: String
     var Name: String
     var type: String
     var Platform: DeparturePlatform?
     var Latitude: Int
     var Longitude: Int
-    var DepartureState: String?
-    var ArrivalState: String?
     var DataId: String
 
     private enum CodingKeys: String, CodingKey {
-        case ArrivalTime, DepartureTime, ArrivalRealTime, DepartureRealTime, Place, Name, type = "Type", Platform, Latitude, Longitude, DepartureState, ArrivalState, DataId
+        case ArrivalTime, DepartureTime, ArrivalRealTime, DepartureRealTime, Name, type = "Type", Platform, Latitude, Longitude, DataId
     }
 
     func getArrivalTime() -> String {
@@ -112,12 +109,6 @@ struct RegularStop: Hashable, Codable {
         let scheduledTimeComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: scheduledTimeDate!)
 
         return calendar.dateComponents([.minute], from: scheduledTimeComponents, to: realtimeComponents).minute!
-    }
-
-    func getStop() -> Stop? {
-        return stops.first { stop in
-            return String(stop.stopID) == self.DataId
-        }
     }
 
     func getPlatform() -> String? {

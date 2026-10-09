@@ -31,8 +31,4 @@ struct Stop: Hashable, Codable, Identifiable {
         return "\(name) \(place)"
     }
 
-    func getName() -> String {
-        return name
-    }
-
 }

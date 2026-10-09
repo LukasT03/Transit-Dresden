@@ -21,34 +21,7 @@ import Foundation
         self.favorites = []
     }
 
-    func add(stopID: Int) {
-        if !isFavorite(stopID: stopID) {
-            favorites.append(stopID)
-            save()
-        }
-    }
-
-    func remove(stopID: Int) {
-        if let firstIndex = favorites.firstIndex(of: stopID) {
-            favorites.remove(at: firstIndex)
-            save()
-        }
-    }
-
     func isFavorite(stopID: Int) -> Bool {
-        let cons = favorites.contains { element in
-            if element == stopID {
-                return true
-            } else {
-                return false
-            }
-        }
-        return cons
-    }
-
-    func save() {
-        if let encoded = try? JSONEncoder().encode(favorites) {
-            UserDefaults.standard.set(encoded, forKey: "FavoriteStops")
-        }
+        favorites.contains(stopID)
     }
 }

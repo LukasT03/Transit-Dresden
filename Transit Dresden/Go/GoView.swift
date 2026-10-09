@@ -28,6 +28,10 @@ struct GoView: View {
             .presentationDetents([.large])
             .presentationDragIndicator(.hidden)
         }
+        // Ortung schon während der Zielauswahl, damit der Standort beim Tippen auf ein Ziel meist feststeht
+        .task {
+            await model.trackLocation()
+        }
     }
 
     // MARK: - Ziel wählen
