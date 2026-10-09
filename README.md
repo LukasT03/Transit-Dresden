@@ -8,8 +8,8 @@ Abfahrten, Verbindungen und Haltestellen für den ÖPNV in Dresden.
 > (u. a. neuer Name, iOS 27, Liquid Glass, MapKit-Geocoding).
 
 ### Showcase
-<p align="center">
-  <img src="images/example0.PNG" width="350">
+<p align="left">
+  <img src="Example-Transit.png" width="350">
 </p>
 
 ## Anforderungen
