@@ -7,7 +7,7 @@ Verbindungen, Haltestellen Live Aktivitäten und Widgets für den ÖPNV in Dresd
 > Seit Oktober 2026 wird das Projekt von mir weiterentwickelt und verändert
 > (u. a. vollständig neues Layout, neues UI, Liquid Glass Support).
 
-### Showcase
+## Showcase
 <p align="left">
   <img src="images/Example-Transit.png" width="350">
 </p>
